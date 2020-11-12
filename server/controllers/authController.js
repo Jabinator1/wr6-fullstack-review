@@ -22,4 +22,36 @@ module.exports = {
         }
         res.status(200).send(req.session.user)
     },
+    login: async (req, res) => {
+        const db = req.app.get('db')
+        const {email, password} = req.body
+
+        const [checkUser] = await db.check_user(email)
+
+        if (!checkUser) {
+            return res.status(400).send("Invalid email/password")
+        }
+        
+        const authenticated = bcrypt.compareSync(password, checkUser.password)
+
+        if (authenticated) {
+            req.session.user = {
+                userId: checkUser.user_id,
+                email: checkUser.email,
+                username: checkUser.username
+            }
+
+            res.status(200).send(req.session.user)
+        } else {
+            res.status(401).send("Invalid email/password")
+        }
+    },
+    logout: (req, res) => {
+        res.session.destroy()
+        res.sendStatus(200)
+    },
+    getUser: (req, res) => {
+        req.session.user ? res.status(200).send(req.session.user)
+        : res.status(202).send("Please log in")
+    },
 }

@@ -2,7 +2,7 @@ CREATE TABLE bird_users (
     user_id SERIAL PRIMARY KEY,
     email VARCHAR(60) NOT NULL,
     username VARCHAR(20) NOT NULL,
-    password VARCHAR(50) NOT NULL
+    password VARCHAR(200) NOT NULL
 );
 
 INSERT INTO bird_users (email, username, password)
