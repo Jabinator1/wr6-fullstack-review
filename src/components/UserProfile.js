@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class Form extends Component {
+export class UserProfile extends Component {
     render() {
         return (
             <div>
-                Form
+                cool
             </div>
         )
     }
 }
 
-export default Form
+export default UserProfile

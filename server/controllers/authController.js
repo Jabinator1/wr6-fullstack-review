@@ -52,6 +52,6 @@ module.exports = {
     },
     getUser: (req, res) => {
         req.session.user ? res.status(200).send(req.session.user)
-        : res.status(202).send("Please log in")
+        : res.status(404).send("Please log in")
     },
 }

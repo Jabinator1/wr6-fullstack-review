@@ -3,6 +3,7 @@ const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 const { register, login, logout, getUser } = require('./controllers/authController')
+const { getPosts, addPost, getPost } = require('./controllers/postController')
 
 const app = express()
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
@@ -27,5 +28,9 @@ app.post("/auth/login", login)
 app.post("/auth/logout", logout)
 app.get("/api/user", getUser)
 
+//# Posts endpoints
+app.get("/api/posts", getPosts)
+app.get("/api/posts/:id", getPost)
+app.post("/api/posts", addPost)
 
 app.listen(SERVER_PORT, () => console.log(`Welcome to port ${SERVER_PORT}`))

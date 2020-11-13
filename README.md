@@ -101,5 +101,3 @@ CREATE TABLE comments (
             - Form.js
             - Feed.js
             - Post.js
-
-<a href="https://github.com/Jabinator1/wr6-fullstack-review.git">Wireframe</a>

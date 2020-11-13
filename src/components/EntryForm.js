@@ -11,7 +11,7 @@ const EntryForm = ({changeHandler, entryFn, newUser, toggleNewUser}) => {
         inputArr.splice(1, 0, {name: "username", type: "text"})
     }
 
-    const inputsMapped = inputArr.map(input => <input type={input.type} name={input.name} placeholder={input.name} onChange={e => changeHandler(e)} />)
+    const inputsMapped = inputArr.map(input => <input key={input.name} type={input.type} name={input.name} placeholder={input.name} onChange={e => changeHandler(e)} />)
 
     return (
         <div>

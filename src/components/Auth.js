@@ -23,9 +23,13 @@ class Auth extends Component {
         e.preventDefault()
         const {email, username, password, newUser} = this.state
         try {
-            const user = await axios.post(`/auth/${newUser ? "register" : "login"}`, newUser ? {email, username, password} : {email, password})
+            const user = await axios.post(
+                `/auth/${newUser ? "register" : "login"}`, 
+                newUser ? {email, username, password} : {email, password}
+            )
             this.props.loginUser(user.data)
             this.props.history.push("/feed")
+
         } catch (err) {
             alert(err.response.request.response)
         }
@@ -44,5 +48,4 @@ class Auth extends Component {
 }
 
 const mapStateToProps = state => state
-
 export default connect(mapStateToProps, {loginUser})(Auth)
